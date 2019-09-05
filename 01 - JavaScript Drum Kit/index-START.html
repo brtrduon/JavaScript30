@@ -59,6 +59,70 @@
 
 <script>
 
+class Drumkit {
+  constructor() {
+    this.audioKeys = [
+      document.querySelector("audio[data-key='83']"),
+      document.querySelector("audio[data-key='65']"),
+      document.querySelector("audio[data-key='68']"),
+      document.querySelector("audio[data-key='70']"),
+      document.querySelector("audio[data-key='71']"),
+      document.querySelector("audio[data-key='72']"),
+      document.querySelector("audio[data-key='74']"),
+      document.querySelector("audio[data-key='75']"),
+      document.querySelector("audio[data-key='76']")
+    ];
+    this.addKeyAudioListeners();
+  }
+
+  addKeyAudioListeners = () => {
+    document.addEventListener("keypress", this.playSound);
+  }
+
+  stopSounds = () => {
+    for (let key of this.audioKeys) {
+      if(!key.isPaused) {
+        key.pause();
+        key.currentTime = 0;
+      }
+    }
+  }
+
+  playSound = (e) => {
+    this.stopSounds();
+    switch (e.key) {
+      case "a":
+        this.audioKeys[0].play();
+        break;
+      case "s":
+        this.audioKeys[1].play();
+        break;    
+      case "d":
+        this.audioKeys[2].play();
+        break;
+      case "f":
+        this.audioKeys[3].play();
+        break;  
+      case "g":
+        this.audioKeys[4].play();
+        break;  
+      case "h":
+        this.audioKeys[5].play();
+        break;  
+      case "j":
+        this.audioKeys[6].play();
+        break;  
+      case "k":
+        this.audioKeys[7].play();
+        break;  
+      case "l":
+        this.audioKeys[8].play();
+        break;  
+    }
+  }
+}
+
+const drumKit = new Drumkit();
 </script>
 
 
